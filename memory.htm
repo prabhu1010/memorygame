@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+
+body { 
+	margin-top: 30px;
+    background: #ffffff;
+	font-size: 28px;
+}
+	
+#superstyle {
+    border: 1px solid #ff0000;
+	 border-collapse: collapse;
+    table-layout:fixed;
+	 font-family: "Ubuntu Mono";
+     color: #000000;
+	 padding: 3px 4px 3px 4px;
+	 text-align: center;
+}
+#superstyle td {
+   border: 1px solid #ff0000;
+	border-collapse: collapse;
+	width: 85px;
+	height: 37px;
+}
+
+.ans { font-weight:bold; width:45px; height:35px; font-size:24px; text-align:center;background-color:yellow;}
+.picbox { width:600px; height:600px; }
+.emp { width:10px }
+
+</style>
+</head>
+
+<script language="javascript">
+var NUMBER = 6;
+var tblRef, arr, arrAns1, arrAns2;
+tblRef = document.getElementsByName("table1");
+
+arr = new Array();
+arrAns1 = new Array();
+arrAns2 = new Array();
+
+function RemoveAfter6sec()
+{
+    document.getElementById("pic").style.display="none";
+    document.getElementById("comment").innerHTML = "LET'S DO ADDITION!";
+    loader();
+}
+
+function checker() {
+    allcorrect = true;
+    for (i=0; i<arr.length; i++) {
+        if (answer1[i].value != arrAns1[i]) {
+            answer1[i].value = "";
+            answer1[i].focus();
+            document.getElementById("comment").innerHTML = " TRY AGAIN.";
+            allcorrect = false;
+            break;
+        }
+        if (answer2[i].value != arrAns2[i]) {
+            answer2[i].value = "";
+            answer2[i].focus();
+            document.getElementById("comment").innerHTML = " TRY AGAIN.";
+            allcorrect = false;
+            break;
+        }
+    }
+
+    if (allcorrect) {
+        nImg = Math.floor(Math.random()*ImageSel.length); 
+        document.getElementById("pic").src = "FAVEPIX/"+ImageSel[nImg];
+        //.src = "FAVEPIX/"+ImageSel[nImg];
+        document.getElementById("pic").style.display="block";
+        document.getElementById("comment").innerHTML = "GOOD JOB! ";
+        setTimeout(RemoveAfter6sec,8000);
+    }
+}
+
+function loader() {
+	var names = ["Cook","Gooch","Root","Stewart","Gower","Pietersen","Boycott","Atherton","Bell","Cowdrey","Hammond","Strauss","Hutton","Barrington","Ponting","Border","Waugh","Clarke","Hayden","Waugh","Langer","Smith","Taylor","Boon","Warner","Chappell","Bradman","Hussey","Harvey","Gilchrist","Walters","Kallis","Amla","Smith","Villiers","Kirsten","Gibbs","Boucher","Cullinan","Elgar","Plessis","Pollock","Cronje","Prince","Mitchell","Lara","Chanderpaul","Richards","Sobers","Greenidge","Lloyd","Haynes","Gayle","Kanhai","Richardson","Sarwan","Hooper","Weekes","Kallicharran","Taylor","Williamson","Fleming","McCullum","Crowe","Wright","Astle","Vettori","Latham","Watling","Congdon","Tendulkar","Dravid","Gavaskar","Laxman","Sehwag","Kohli","Ganguly","Vengsarkar","Pujara","Azharuddin","Viswanath","Dev","Dhoni","Khan","Miandad","Inzamam-ul-Haq","Yousuf","Ali","Malik","Misbah-ul-Haq","Abbas","Shafiq","Nazar","Sangakkara","Jayawardene","Jayasuriya","Silva","Mathews","Atapattu","Dilshan","Samaraweera","Karunaratne","Ranatunga","Tillakaratne"];
+
+	 var memstore = [] 
+     for (i=0; i<5; i++) {
+        word = Math.floor(Math.random()*names.length); 
+		//alert(names[word]);
+        //document.getElementById().style.display="block";
+		memstore[i] = names[word];
+		//alert(memstore[i]);
+		/*
+        pos = Math.floor(Math.random()*10); 
+        temp = arr[i];
+        arr[i] = arr[pos]; 
+        arr[pos] = temp;
+		*/
+     }
+        
+     answer1[0].focus();
+}	
+</script>
+<body onload="loader();">
+<center><form>
+<table name="table1" id="superstyle">
+<tr><td><class="ans" id="answ[]"></td></tr>
+<tr><td><class="ans" id="answ[]"></td></tr>
+<tr><td><class="ans" id="answ[]"></td></tr>
+<tr><td><class="ans" id="answ[]"></td></tr>
+<tr><td><class="ans" id="answ[]"></td></tr>
+</table>
+</form>
+</center>
+<p>
+<center>
+	<input type=submit style="font-size:25px;" value="Show words" border=2 onClick="loader();">
+</center><p>
+</body>
+
+</html>
